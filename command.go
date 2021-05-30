@@ -82,9 +82,9 @@ func (c *Command) run(args []string) error {
 		if err != nil {
 			customErr := c.app.customFlagError()
 			if customErr != nil {
-				return fmt.Errorf("%s\n%s", err, *customErr)
+				return fmt.Errorf("Error: %s\n%s", err, *customErr)
 			}
-			return fmt.Errorf("%s\nSee '%s --help' for usage", err, c.app.Name())
+			return fmt.Errorf("Error: %s\nSee '%s --help' for usage", err, c.app.Name())
 		}
 
 		// Help takes precedence
