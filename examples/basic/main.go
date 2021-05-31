@@ -7,7 +7,7 @@ import (
 func main() {
 
 	// Create new cli
-	cli := clir.NewCli("Basic", "b", "A basic example", "v0.0.1")
+	cli := clir.NewCli("Basic", "A basic example", "v0.0.1")
 
 	// Set long description
 	cli.LongDescription("This app prints hello world")

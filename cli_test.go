@@ -51,7 +51,7 @@ func TestCli(t *testing.T) {
 
 	t.Run("Run BoolFlag()", func(t *testing.T) {
 		var variable bool
-		c.BoolFlag("bool", "description", &variable)
+		c.BoolFlag("bool", "b", "description", &variable)
 	})
 
 	t.Run("Run StringFlag()", func(t *testing.T) {

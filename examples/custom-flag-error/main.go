@@ -19,9 +19,9 @@ Flags:
 func main() {
 
 	// Create new cli
-	cli := clir.NewCli("Flag", "A custom error example", "v0.0.1")
+	cli := clir.NewCli("flag", "A custom error example", "v0.0.1")
 
-	cli.SetErrorFunction(customFlagError)
+	// cli.SetErrorFunction(customFlagError)
 
 	// Run!
 	if err := cli.Run(); err != nil {
