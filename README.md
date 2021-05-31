@@ -22,8 +22,10 @@
   * Uses the standard library `flag` package
   * Auto-generated help
   * Custom banners
+  * Custom flag errors
   * Hidden Subcommands
   * Default Subcommand
+  * Flags aliases
   * Dependency free
 
 ### Example
