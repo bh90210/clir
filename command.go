@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"rsc.io/getopt"
 )
 
 // Command represents a command that may be run by the user
@@ -18,7 +20,7 @@ type Command struct {
 	longestSubcommand int
 	actionCallback    Action
 	app               *Cli
-	flags             *flag.FlagSet
+	flags             *getopt.FlagSet
 	flagCount         int
 	helpFlag          bool
 	hidden            bool
@@ -45,8 +47,9 @@ func (c *Command) setParentCommandPath(parentCommandPath string) {
 	c.commandPath += c.name
 
 	// Set up flag set
-	c.flags = flag.NewFlagSet(c.commandPath, flag.ContinueOnError)
-	c.BoolFlag("help", "Get help on the '"+strings.ToLower(c.commandPath)+"' command.", &c.helpFlag)
+	// c.flags = flag.NewFlagSet(c.commandPath, flag.ContinueOnError)
+	c.flags = getopt.NewFlagSet(c.commandPath, flag.ContinueOnError)
+	c.BoolFlag("help", "h", "Get help on the '"+strings.ToLower(c.commandPath)+"' command.", &c.helpFlag)
 
 	// result.Flags.Usage = result.PrintHelp
 
@@ -199,8 +202,18 @@ func (c *Command) AddCommand(command *Command) {
 }
 
 // BoolFlag - Adds a boolean flag to the command
-func (c *Command) BoolFlag(name, description string, variable *bool) *Command {
-	c.flags.BoolVar(variable, name, *variable, description)
+func (c *Command) BoolFlag(name, short, description string, variable *bool) *Command {
+	switch {
+	case name == "":
+		c.flags.BoolVar(variable, short, *variable, description)
+	default:
+		c.flags.BoolVar(variable, name, *variable, description)
+	}
+
+	if name != "" && short != "" {
+		c.flags.Alias(short, name)
+	}
+
 	c.flagCount++
 	return c
 }

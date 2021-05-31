@@ -97,8 +97,10 @@ func (c *Cli) PreRun(callback func(*Cli) error) {
 }
 
 // BoolFlag - Adds a boolean flag to the root command.
-func (c *Cli) BoolFlag(name, description string, variable *bool) *Cli {
-	c.rootCommand.BoolFlag(name, description, variable)
+// Argument short is a short name '-h --help' that can be empty.
+// If used it needs to be a single letter character.
+func (c *Cli) BoolFlag(name, short, description string, variable *bool) *Cli {
+	c.rootCommand.BoolFlag(name, short, description, variable)
 	return c
 }
 
