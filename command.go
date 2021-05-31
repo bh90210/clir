@@ -80,9 +80,11 @@ func (c *Command) run(args []string) error {
 		// Parse flags
 		err := c.parseFlags(args)
 		if err != nil {
-			fmt.Printf("Error: %s\n\n", err.Error())
-			c.PrintHelp()
-			return err
+			customErr := c.app.customFlagError()
+			if customErr != nil {
+				return fmt.Errorf("Error: %s\n%s", err, *customErr)
+			}
+			return fmt.Errorf("Error: %s\nSee '%s --help' for usage", err, c.app.Name())
 		}
 
 		// Help takes precedence

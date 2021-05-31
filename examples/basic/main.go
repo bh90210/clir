@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/leaanthony/clir"
 )
 
@@ -19,6 +21,8 @@ func main() {
 	})
 
 	// Run!
-	cli.Run()
+	if err := cli.Run(); err != nil {
+		fmt.Println(err)
+	}
 
 }

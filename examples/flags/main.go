@@ -21,7 +21,7 @@ func main() {
 
 	// Awesome
 	var awesome bool
-	cli.BoolFlag("awesome", "Are you awesome?", &awesome)
+	cli.BoolFlag("awesome", "Are you awesome?", &awesome, "a", "as")
 
 	// Define action for the command
 	cli.Action(func() error {
