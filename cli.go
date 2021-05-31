@@ -97,22 +97,19 @@ func (c *Cli) PreRun(callback func(*Cli) error) {
 }
 
 // BoolFlag - Adds a boolean flag to the root command.
-func (c *Cli) BoolFlag(name, description string, variable *bool, aliases ...string) *Cli {
-	c.rootCommand.BoolFlag(name, description, variable)
-	for _, alias := range aliases {
-		c.rootCommand.BoolFlag(alias, description, variable).Hidden()
-	}
+func (c *Cli) BoolFlag(name, longName, description string, variable *bool) *Cli {
+	c.rootCommand.BoolFlag(name, longName, description, variable)
 	return c
 }
 
 // StringFlag - Adds a string flag to the root command.
-func (c *Cli) StringFlag(name, description string, variable *string, aliases ...string) *Cli {
+func (c *Cli) StringFlag(name, description string, variable *string) *Cli {
 	c.rootCommand.StringFlag(name, description, variable)
 	return c
 }
 
 // IntFlag - Adds an int flag to the root command.
-func (c *Cli) IntFlag(name, description string, variable *int, aliases ...string) *Cli {
+func (c *Cli) IntFlag(name, description string, variable *int) *Cli {
 	c.rootCommand.IntFlag(name, description, variable)
 	return c
 }

@@ -21,8 +21,9 @@ func main() {
 
 	// Awesome
 	var awesome bool
-	cli.BoolFlag("awesome", "Are you awesome?", &awesome, "a", "as")
-
+	cli.BoolFlag("a", "awesome", "Are you awesome?", &awesome)
+	var lol bool
+	cli.BoolFlag("l", "lol", "Are you awesome?", &lol)
 	// Define action for the command
 	cli.Action(func() error {
 
@@ -39,9 +40,16 @@ func main() {
 			fmt.Println("You are awesome!")
 		}
 
+		if lol {
+			fmt.Println("lol")
+		}
+
 		return nil
 	})
 
-	cli.Run()
+	// Run!
+	if err := cli.Run(); err != nil {
+		fmt.Printf("Error: %s\n", err)
+	}
 
 }
