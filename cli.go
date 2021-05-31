@@ -105,14 +105,14 @@ func (c *Cli) BoolFlag(name, short, description string, variable *bool) *Cli {
 }
 
 // StringFlag - Adds a string flag to the root command.
-func (c *Cli) StringFlag(name, description string, variable *string) *Cli {
-	c.rootCommand.StringFlag(name, description, variable)
+func (c *Cli) StringFlag(name, short, description string, variable *string) *Cli {
+	c.rootCommand.StringFlag(name, short, description, variable)
 	return c
 }
 
 // IntFlag - Adds an int flag to the root command.
-func (c *Cli) IntFlag(name, description string, variable *int) *Cli {
-	c.rootCommand.IntFlag(name, description, variable)
+func (c *Cli) IntFlag(name, short, description string, variable *int) *Cli {
+	c.rootCommand.IntFlag(name, short, description, variable)
 	return c
 }
 

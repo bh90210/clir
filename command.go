@@ -203,31 +203,39 @@ func (c *Command) AddCommand(command *Command) {
 
 // BoolFlag - Adds a boolean flag to the command
 func (c *Command) BoolFlag(name, short, description string, variable *bool) *Command {
-	switch {
-	case name == "":
-		c.flags.BoolVar(variable, short, *variable, description)
-	default:
-		c.flags.BoolVar(variable, name, *variable, description)
+	if name == "" {
+		name = short
 	}
-
+	c.flags.BoolVar(variable, name, *variable, description)
 	if name != "" && short != "" {
 		c.flags.Alias(short, name)
 	}
-
 	c.flagCount++
 	return c
 }
 
 // StringFlag - Adds a string flag to the command
-func (c *Command) StringFlag(name, description string, variable *string) *Command {
+func (c *Command) StringFlag(name, short, description string, variable *string) *Command {
+	if name == "" {
+		name = short
+	}
 	c.flags.StringVar(variable, name, *variable, description)
+	if name != "" && short != "" {
+		c.flags.Alias(short, name)
+	}
 	c.flagCount++
 	return c
 }
 
 // IntFlag - Adds an int flag to the command
-func (c *Command) IntFlag(name, description string, variable *int) *Command {
+func (c *Command) IntFlag(name, short, description string, variable *int) *Command {
+	if name == "" {
+		name = short
+	}
 	c.flags.IntVar(variable, name, *variable, description)
+	if name != "" && short != "" {
+		c.flags.Alias(short, name)
+	}
 	c.flagCount++
 	return c
 }
