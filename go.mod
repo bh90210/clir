@@ -1,4 +1,4 @@
-module github.com/bh90210/clir
+module github.com/leaanthony/clir
 
 go 1.12
 

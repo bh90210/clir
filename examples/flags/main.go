@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/bh90210/clir"
+	"github.com/leaanthony/clir"
 )
 
 func main() {
