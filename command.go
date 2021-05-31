@@ -49,7 +49,7 @@ func (c *Command) setParentCommandPath(parentCommandPath string) {
 	// Set up flag set
 	// c.flags = flag.NewFlagSet(c.commandPath, flag.ContinueOnError)
 	c.flags = getopt.NewFlagSet(c.commandPath, flag.ContinueOnError)
-	c.BoolFlag("h", "help", "Get help on the '"+strings.ToLower(c.commandPath)+"' command.", &c.helpFlag)
+	c.BoolFlag("help", "h", "Get help on the '"+strings.ToLower(c.commandPath)+"' command.", &c.helpFlag)
 
 	// result.Flags.Usage = result.PrintHelp
 
@@ -162,7 +162,6 @@ func (c *Command) PrintHelp() {
 		fmt.Println()
 		c.flags.SetOutput(os.Stdout)
 		c.flags.PrintDefaults()
-		getopt.PrintDefaults()
 		c.flags.SetOutput(os.Stderr)
 
 	}
@@ -204,10 +203,19 @@ func (c *Command) AddCommand(command *Command) {
 }
 
 // BoolFlag - Adds a boolean flag to the command
-func (c *Command) BoolFlag(name, longName, description string, variable *bool) *Command {
-	c.flags.BoolVar(variable, name, *variable, description)
+func (c *Command) BoolFlag(name, short, description string, variable *bool) *Command {
+	switch {
+	case name == "":
+		c.flags.BoolVar(variable, short, *variable, description)
+	default:
+		c.flags.BoolVar(variable, name, *variable, description)
+	}
+
+	if name != "" && short != "" {
+		c.flags.Alias(short, name)
+	}
+
 	c.flagCount++
-	c.flags.Alias(name, longName)
 	return c
 }
 

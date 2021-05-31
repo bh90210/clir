@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/leaanthony/clir"
+	"github.com/bh90210/clir"
 )
 
 func main() {
@@ -21,9 +21,11 @@ func main() {
 
 	// Awesome
 	var awesome bool
-	cli.BoolFlag("a", "awesome", "Are you awesome?", &awesome)
+	cli.BoolFlag("awesome", "a", "Are you awesome?", &awesome)
 	var lol bool
-	cli.BoolFlag("l", "lol", "Are you awesome?", &lol)
+	cli.BoolFlag("lol", "l", "Are you LOL?", &lol)
+	var test bool
+	cli.BoolFlag("test", "", "Are you TEST?", &test)
 	// Define action for the command
 	cli.Action(func() error {
 
