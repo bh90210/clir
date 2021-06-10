@@ -13,11 +13,11 @@ func main() {
 
 	// Name
 	var name string
-	cli.StringFlag("name", "Your name", &name)
+	cli.StringFlag("name", "n", "Your name", &name)
 
 	// Age
 	var age int
-	cli.IntFlag("age", "Your age", &age)
+	cli.IntFlag("age", "a", "Your age", &age)
 
 	// Awesome
 	var awesome bool

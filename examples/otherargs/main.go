@@ -16,7 +16,7 @@ func main() {
 
 	// Name
 	var name string
-	cli.StringFlag("name", "Your name", &name)
+	cli.StringFlag("name", "n", "Your name", &name)
 
 	// Define action
 	cli.Action(func() error {

@@ -137,13 +137,13 @@ func TestCommand(t *testing.T) {
 
 	t.Run("Run StringFlag()", func(t *testing.T) {
 		var variable = "variable"
-		c.StringFlag("name", "description", &variable)
+		c.StringFlag("name", "short", "description", &variable)
 
 	})
 
 	t.Run("Run IntFlag()", func(t *testing.T) {
 		var variable int
-		c.IntFlag("test", "description", &variable)
+		c.IntFlag("test", "short", "description", &variable)
 
 	})
 

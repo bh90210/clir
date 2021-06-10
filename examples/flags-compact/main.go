@@ -17,9 +17,9 @@ func main() {
 	cli := clir.NewCli("Flags", "An example of using flags", "v0.0.1")
 
 	// Define flags
-	cli.StringFlag("name", "Your name", &name).
-		IntFlag("age", "Your age", &age).
-		BoolFlag("awesome", "Are you awesome?", &awesome)
+	cli.StringFlag("name", "n", "Your name", &name).
+		IntFlag("age", "a", "Your age", &age).
+		BoolFlag("awesome", "", "Are you awesome?", &awesome)
 
 	// Define action
 	cli.Action(func() error {

@@ -15,9 +15,9 @@ func main() {
 
 	// More chain than Fleetwood Mac
 	clir.NewCli("Flags", "An example of using flags", "v0.0.1").
-		StringFlag("name", "Your name", &name).
-		IntFlag("age", "Your age", &age).
-		BoolFlag("awesome", "Are you awesome?", &awesome).
+		StringFlag("name", "n", "Your name", &name).
+		IntFlag("age", "a", "Your age", &age).
+		BoolFlag("awesome", "", "Are you awesome?", &awesome).
 		Action(func() error {
 
 			if name == "" {

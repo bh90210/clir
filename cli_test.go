@@ -56,12 +56,12 @@ func TestCli(t *testing.T) {
 
 	t.Run("Run StringFlag()", func(t *testing.T) {
 		var variable string
-		c.StringFlag("string", "description", &variable)
+		c.StringFlag("string", "short", "description", &variable)
 	})
 
 	t.Run("Run IntFlag()", func(t *testing.T) {
 		var variable int
-		c.IntFlag("int", "description", &variable)
+		c.IntFlag("int", "short", "description", &variable)
 	})
 
 	t.Run("Run Action()", func(t *testing.T) {
