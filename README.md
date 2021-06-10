@@ -19,7 +19,7 @@ func main() {
 
 	// Name
 	name := "Anonymous"
-	cli.StringFlag("name", "short, "Your name", &name)
+	cli.StringFlag("name", "n", "Your name", &name)
 
 	// Define action for the command
 	cli.Action(func() error {
